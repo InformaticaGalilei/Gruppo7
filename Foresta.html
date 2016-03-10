@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title></title></head>
+<body style="background-image: url(Carbonio-Wallpaper.jpg);">
+<div style="text-align: right;"><ol style="margin-left: 40px; text-align: right;"><li><h3 style="font-size: 20pt;"><a href="Index.html"><img style="border: 0px solid ; width: 258px; height: 59px;" alt="" src="indice.png"></a>&nbsp;&lt;\p&gt;
+</h3></li></ol>
+</div>
+<h3 style="font-size: 20pt; text-align: center;"><input id="btnOK" value="Crea" onclick="bottone()" style="" type="button"><span style="text-decoration: underline;">&nbsp;</span></h3>
+<canvas id="canvas" width="2000" height="500">
+browser che fa schifo</canvas>
+<script type="text/javascript">
+function bottone(){
+var elem = document.getElementById('canvas');
+var context = elem.getContext('2d');
+context.clearRect(0,0,2000,500);
+var gradi_a_radianti = Math.PI / 180.0;
+var i=0;
+function disegnaLinea(x1, y1, x2, y2){
+context.strokeStyle = randomColor();
+context.moveTo(x1, y1);
+context.lineTo(x2, y2);
+}
+function disegnaAlbero(x1, y1, angolo, ripetere){
+if (ripetere !== 0){
+var x2 = x1 + (Math.cos(angolo * gradi_a_radianti) * ripetere * grandezza);
+var y2 = y1 + (Math.sin(angolo * gradi_a_radianti) * ripetere * grandezza);
+disegnaLinea(x1, y1, x2, y2);
+disegnaAlbero(x2, y2, angolo - kAngoloA, ripetere -1);
+disegnaAlbero(x2, y2, angolo + kAngoloB, ripetere -1);
+}
+}
+function randomColor() {
+var r, g, b;
+r = Math.floor(Math.random() * (251 - 0)) + 0;
+g = Math.floor(Math.random() * (251 - 0)) + 0;
+b = Math.floor(Math.random() * (251 - 0)) + 0;
+return "rgb(" + r + "," + g + "," + b + ")";
+}
+while(i<38){
+var ripetere = Math.floor(Math.random() * (10 - 6)) + 6;
+var grandezza = Math.floor(Math.random() * (8 - 4)) + 4;
+var kAngoloA = Math.floor(Math.random() * (40 - 10)) + 10;
+var kAngoloB = Math.floor(Math.random() * (40 - 10)) + 10;
+var x1=Math.floor(Math.random() * (1600 - 200)) + 200;
+var y1=Math.floor(Math.random() * (500 - 400)) + 400;
+context.lineWidth = Math.floor(Math.random() * (5 - 2)) + 2;
+context.beginPath();
+disegnaAlbero(x1, y1, -90, ripetere); 
+context.closePath();
+context.stroke();
+i=i+1;
+}
+}
+</script>
+</body></html>

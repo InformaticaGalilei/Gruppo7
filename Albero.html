@@ -12,7 +12,7 @@ context.lineWidth = 3;
 context.strokeStyle =randomColor();
 var gradi_a_radianti = Math.PI / 180.0;
 var ripetere = Math.floor(Math.random() * (13 - 8)) + 8;
-var grandezza = Math.floor(Math.random() * (9 - 5)) + 5;
+var grandezza = Math.floor(Math.random() * (8 - 5)) + 5;
 var kAngoloA = Math.floor(Math.random() * (41 - 10)) + 10;
 var kAngoloB = Math.floor(Math.random() * (41 - 10)) + 10;
 function randomColor() {
@@ -36,7 +36,7 @@ function disegnaAlbero(x1, y1, angolo, ripetere){
   }
 }
 	context.beginPath();
-	disegnaAlbero(800, 600, -90, ripetere);
+	disegnaAlbero(800, 500, -90, ripetere);
 	context.closePath();
 	context.stroke();
 }
